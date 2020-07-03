@@ -20,6 +20,7 @@ async function run() {
   console.log("Firing up Chrome");
   const page = await browser.newPage();
   await page.goto(site.url);
+  await page.waitFor(1000);
 
   for (var uid = 0; uid < nrUsers; uid++) {
     var index = getRandomArbitrary(0, users.length);
@@ -56,6 +57,7 @@ async function run() {
     console.log("Logging Off");
     await login.Logoff(page);
     console.log("Logged Off");
+    await page.waitFor(2000);
   }
 
   browser.close();
